@@ -2,6 +2,7 @@ import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from locators import Locators
+from data import authorization
 
 
 class TestLogin:
@@ -10,8 +11,8 @@ class TestLogin:
     def test_login_click_on_button_show_constructor_page(self, driver, button):
         driver.find_element(*button).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_HEADER))
-        driver.find_element(*Locators.EMAIL).send_keys('annaandarzhanova1123@yandex.ru')
-        driver.find_element(*Locators.PASSWORD).send_keys('963258')
+        driver.find_element(*Locators.EMAIL).send_keys(authorization.login)
+        driver.find_element(*Locators.PASSWORD).send_keys(authorization.password)
         driver.find_element(*Locators.LOGIN_BUTTON).click()
         text = WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_HEADER)).text
@@ -31,8 +32,8 @@ class TestLogin:
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(header))
         driver.find_element(*Locators.LOGIN_LINK).click()
-        driver.find_element(*Locators.EMAIL).send_keys('annaandarzhanova1123@yandex.ru')
-        driver.find_element(*Locators.PASSWORD).send_keys('963258')
+        driver.find_element(*Locators.EMAIL).send_keys(authorization.login)
+        driver.find_element(*Locators.PASSWORD).send_keys(authorization.password)
         driver.find_element(*Locators.LOGIN_BUTTON).click()
         text = WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_HEADER)).text
