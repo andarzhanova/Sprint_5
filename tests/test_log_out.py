@@ -18,4 +18,4 @@ class TestLogOut:
             expected_conditions.element_to_be_clickable(Locators.EXIT_BUTTON)).click()
         text = WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(Locators.LOGIN_HEADER)).text
-        assert text == 'Вход'
+        assert text == 'Вход', 'Выход из аккаунта не осуществлён: не отображена страница авторизации'
